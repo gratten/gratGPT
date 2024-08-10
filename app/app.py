@@ -42,7 +42,8 @@ def create_app():
 
     @app.route("/prompt", methods=["POST"])
     def prompt():
-        user_input = request.json["prompt"].strip()
+        # user_input = request.json["prompt"].strip()
+        user_input = request.form.get("prompt", "").strip()
         llm_client = get_llm_client()
 
         output = llm_client.get_llm_response(input=user_input)
